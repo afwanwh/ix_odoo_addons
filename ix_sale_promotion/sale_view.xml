@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <menuitem id="sales_promotion_ix" name="Promotion" parent="base.menu_base_partner" sequence="8"/>
+        <record id="form_view_sales_promotion_ix" model="ir.ui.view">
+            <field name="name">form_view_sales_promotion_ix</field>
+            <field name="model">sale.promotion</field>
+            <field name="arch" type="xml">
+                <form string="Sales Promotions" version="7.0">
+                    <header>
+                        <button name="turn_promotion_on" string="Turn ON" type="object" attrs="{'invisible': [('state','in',('on'))]}" class="oe_highlight"/>
+                        <button name="turn_promotion_off" string="Turn OFF" type="object" attrs="{'invisible': [('state','in',('off'))]}" class="oe_highlight"/>
+                        <field name="state" widget="statusbar" statusbar_visible="on, off"/>
+                    </header>
+                    <label for="name" class="oe_edit_only"/>
+                    <h1><field name="name"/></h1>
+                    <group>
+                        <field name="code"/>
+                        <field name="type"/>
+                    </group>
+                    <separator string="Promotion Rule" attrs="{'invisible': [('type','=',False)]}"/>
+                    <group>
+                        <field name="amount_discount" attrs="{'invisible': [('type','not in',('fixed'))]}"/>
+                        <field name="point_values" attrs="{'invisible': [('type','not in',('points'))]}"/>
+                        <field name="python_formula" nolabel="1" placeholder="Put a python code here. It should be has return value" attrs="{'invisible': [('type','not in',('python'))]}"/>
+                    </group>
+                    <group attrs="{'invisible': [('type','not in',('percentage'))]}">
+                        <label for="percentage_discount"/>
+                        <div>
+                            <field name="percentage_discount" class="oe_inline"/> percent
+                        </div>
+                    </group>
+                </form>
+           </field>
+        </record>
+
+        <record id="tree_view_sales_promotion_ix" model="ir.ui.view">
+            <field name="name">tree_view_sales_promotion_ix</field>
+            <field name="model">sale.promotion</field>
+            <field name="arch" type="xml">
+                <tree string="Sales Shop">
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="type"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_sales_promotion_ix" model="ir.actions.act_window">
+            <field name="name">Sale Promotions</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.promotion</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="tree_view_sales_promotion_ix"/>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to define a new sale promotion.
+              </p><p>
+                Sale promotion will boost your sales. Make a good promotion with discount calculated
+                based on percentage, points, fixed amount, or python code.
+              </p>
+            </field>
+        </record>
+
+        <menuitem action="action_sales_promotion_ix" id="menu_sales_promotion_ix" parent="sales_promotion_ix"/>
+    </data>
+</openerp>

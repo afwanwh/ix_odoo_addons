@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 ##############################################################################
 #
-#    OpenERP, Open Source Management Solution
+#    Afwan Wali Hamim
 #    Copyright (C) 2015 Afwan Wali Hamim <afwanwalihamim@gmail.com>
 #
 #    This program is free software: you can redistribute it and/or modify
@@ -31,8 +31,21 @@ class sale_promotion(orm.Model):
         'type': fields.selection([('fixed', 'Fixed amount discount'), ('percentage', 'Percentage discount'), ('python', 'Pythonic formula'), ('points', 'Points based discount')], 'Promotion Type', required=True),
         'amount_discount': fields.float('Amount of Disc'),
         'percentage_discount': fields.float('Discount Percentage'),
-        'point_available': fields.integer('Available Points'),
-        'point_redeemed': fields.integer('Redeemed Points'),
         'point_values': fields.float('Value of a Point'),
         'python_formula': fields.text('Python Formula'),
+        'state': fields.selection([('off', 'OFF'), ('on', 'ON')], 'Status'),
     }
+
+    _defaults = {
+        'state': 'off',
+    }
+
+    def turn_promotion_on(self, cr, uid, ids, context=None):
+        if context is None:
+            context = {}
+        return self.write(cr, uid, ids, {'state': 'on'}, context=context)
+
+    def turn_promotion_off(self, cr, uid, ids, context=None):
+        if context is None:
+            context = {}
+        return self.write(cr, uid, ids, {'state': 'off'}, context=context)

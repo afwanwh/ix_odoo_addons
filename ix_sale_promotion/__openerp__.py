@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 ##############################################################################
 #
-#    OpenERP, Open Source Management Solution
+#    Afwan Wali Hamim
 #    Copyright (C) 2015 Afwan Wali Hamim <afwanwalihamim@gmail.com>
 #
 #    This program is free software: you can redistribute it and/or modify
@@ -26,12 +26,13 @@
     'sequence': 20,
     'summary': 'Sales Promotion',
     'description': """
-This module provide sales promotion management. 
+        This module provide sales promotion management.
     """,
     'author': 'Afwan Wali Hamim',
     'website': 'http://ixotem.blogspot.com/',
     'depends': ['sale'],
     'data': [
+        'sale_view.xml',
     ],
     'demo': [],
     'test': [

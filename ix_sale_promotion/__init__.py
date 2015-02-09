@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 ##############################################################################
 #
-#    OpenERP, Open Source Management Solution
+#    Afwan Wali Hamim
 #    Copyright (C) 2015 Afwan Wali Hamim <afwanwalihamim@gmail.com>
 #
 #    This program is free software: you can redistribute it and/or modify
