@@ -1,0 +1,38 @@
+# -*- coding: utf-8 -*-
+##############################################################################
+#
+#    OpenERP, Open Source Management Solution
+#    Copyright (C) 2015 Afwan Wali Hamim <afwanwalihamim@gmail.com>
+#
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU Affero General Public License as
+#    published by the Free Software Foundation, either version 3 of the
+#    License, or (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU Affero General Public License for more details.
+#
+#    You should have received a copy of the GNU Affero General Public License
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+##############################################################################
+
+from openerp.osv import fields, orm
+
+
+class sale_promotion(orm.Model):
+    _name = 'sale.promotion'
+
+    _columns = {
+        'name': fields.char('Tittle', required=True, help='Tittle of promotion.'),
+        'code': fields.char('Code', required=True, help='Code of promotion. Must be unique!'),
+        'type': fields.selection([('fixed', 'Fixed amount discount'), ('percentage', 'Percentage discount'), ('python', 'Pythonic formula'), ('points', 'Points based discount')], 'Promotion Type', required=True),
+        'amount_discount': fields.float('Amount of Disc'),
+        'percentage_discount': fields.float('Discount Percentage'),
+        'point_available': fields.integer('Available Points'),
+        'point_redeemed': fields.integer('Redeemed Points'),
+        'point_values': fields.float('Value of a Point'),
+        'python_formula': fields.text('Python Formula'),
+    }
