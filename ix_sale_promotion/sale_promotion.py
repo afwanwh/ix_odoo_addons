@@ -28,7 +28,7 @@ class sale_promotion(orm.Model):
     _columns = {
         'name': fields.char('Tittle', required=True, help='Tittle of promotion.'),
         'code': fields.char('Code', required=True, help='Code of promotion. Must be unique!'),
-        'type': fields.selection([('fixed', 'Fixed amount discount'), ('percentage', 'Percentage discount'), ('python', 'Pythonic formula'), ('points', 'Points based discount')], 'Promotion Type', required=True),
+        'type': fields.selection([('fixed', 'Fixed Amount Discount'), ('free', 'Buy X free Y'), ('percentage', 'Percentage Discount'), ('python', 'Pythonic Formula'), ('points', 'Points Based Discount')], 'Promotion Type', required=True),
         'amount_discount': fields.float('Amount of Disc'),
         'percentage_discount': fields.float('Discount Percentage'),
         'point_values': fields.float('Value of a Point'),
