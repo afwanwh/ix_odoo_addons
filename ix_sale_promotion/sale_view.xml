@@ -38,10 +38,11 @@
             <field name="name">tree_view_sales_promotion_ix</field>
             <field name="model">sale.promotion</field>
             <field name="arch" type="xml">
-                <tree string="Sales Shop">
+                <tree string="Sales Promotion" colors="blue:state=='off'">
                     <field name="name"/>
                     <field name="code"/>
                     <field name="type"/>
+                    <field name="state"/>
                 </tree>
             </field>
         </record>
