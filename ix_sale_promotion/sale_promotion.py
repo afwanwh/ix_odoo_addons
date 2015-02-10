@@ -40,7 +40,7 @@ class sale_promotion(orm.Model):
         'state': 'off',
     }
 
-    _sql_constraints = [('code_uniq', 'unique(code)', 'Two or more same codes are disallowe. Define another code.')]
+    _sql_constraints = [('code_uniq', 'unique(code)', 'Two or more same codes are disallowed. Define another code.')]
 
     def turn_promotion_on(self, cr, uid, ids, context=None):
         if context is None:
