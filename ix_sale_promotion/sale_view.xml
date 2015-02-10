@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
     <data>
+        <record id="promotion_view_inside_sale_order_ix" model="ir.ui.view">
+            <field name="name">promotion_view_inside_sale_order_ix</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <field name="client_order_ref" position="after">
+                    <field name="promotion_id" domain="[('state', '=', 'on'), ('usage', 'in', ['subtotal', 'total']), ('type', 'in', ['percentage', 'fixed', 'free'])]"/>
+                </field>
+            </field>
+        </record>
+
         <menuitem id="sales_promotion_ix" name="Promotion" parent="base.menu_base_partner" sequence="8"/>
         <record id="form_view_sales_promotion_ix" model="ir.ui.view">
             <field name="name">form_view_sales_promotion_ix</field>
@@ -20,15 +31,19 @@
                     </group>
                     <separator string="Promotion Rule" attrs="{'invisible': [('type','=',False)]}"/>
                     <group>
-                        <field name="amount_discount" attrs="{'invisible': [('type','not in',('fixed'))]}"/>
-                        <field name="point_values" attrs="{'invisible': [('type','not in',('points'))]}"/>
-                        <field name="python_formula" nolabel="1" placeholder="Put a python code here. It should be has return value" attrs="{'invisible': [('type','not in',('python'))]}"/>
-                    </group>
-                    <group attrs="{'invisible': [('type','not in',('percentage'))]}">
-                        <label for="percentage_discount"/>
-                        <div>
-                            <field name="percentage_discount" class="oe_inline"/> percent
-                        </div>
+                        <group>
+                            <field name="buy_qty" attrs="{'invisible': [('type','not in',('free'))]}"/>
+                            <field name="amount_discount" attrs="{'invisible': [('type','not in',('fixed'))]}"/>
+                            <field name="point_values" attrs="{'invisible': [('type','not in',('points'))]}"/>
+                            <label for="percentage_discount" attrs="{'invisible': [('type','not in',('percentage'))]}"/>
+                            <div attrs="{'invisible': [('type','not in',('percentage'))]}">
+                                <field name="percentage_discount" class="oe_inline"/> percent
+                            </div>
+                        </group>
+                        <group>
+                            <field name="free_qty" attrs="{'invisible': [('type','not in',('free'))]}"/>
+                            <field name="usage" attrs="{'invisible': [('type','not in',('fixed', 'percentage'))]}"/>
+                        </group>
                     </group>
                 </form>
            </field>
@@ -59,7 +74,7 @@
                 Click to define a new sale promotion.
               </p><p>
                 Sale promotion will boost your sales. Make a good promotion with discount calculated
-                based on percentage, points, fixed amount, or python code.
+                based on percentage, points, fixed amount, or buy x free y.
               </p>
             </field>
         </record>

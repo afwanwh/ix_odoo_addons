@@ -28,12 +28,14 @@ class sale_promotion(orm.Model):
     _columns = {
         'name': fields.char('Tittle', required=True, help='Tittle of promotion.'),
         'code': fields.char('Code', required=True, help='Code of promotion. Must be unique!'),
-        'type': fields.selection([('fixed', 'Fixed Amount Discount'), ('free', 'Buy X free Y'), ('percentage', 'Percentage Discount'), ('python', 'Pythonic Formula'), ('points', 'Points Based Discount')], 'Promotion Type', required=True),
+        'type': fields.selection([('fixed', 'Fixed Amount Discount'), ('free', 'Buy X Free Y'), ('percentage', 'Percentage Discount'), ('points', 'Points Based Discount')], 'Promotion Type', required=True),
         'amount_discount': fields.float('Amount of Disc'),
         'percentage_discount': fields.float('Discount Percentage'),
         'point_values': fields.float('Value of a Point'),
-        'python_formula': fields.text('Python Formula'),
         'state': fields.selection([('off', 'OFF'), ('on', 'ON')], 'Status'),
+        'buy_qty': fields.integer('Buy Qty'),
+        'free_qty': fields.integer('Free Qty'),
+        'usage': fields.selection([('product', 'Product Only'), ('subtotal', 'Subtotal in Sale Order'), ('total', 'Total in Sale Order')], 'Apply for'),
     }
 
     _defaults = {

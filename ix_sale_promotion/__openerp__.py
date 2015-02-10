@@ -33,6 +33,8 @@
     'depends': ['sale'],
     'data': [
         'sale_view.xml',
+        'product_view.xml',
+        'res_partner_view.xml',
     ],
     'demo': [],
     'test': [

@@ -19,7 +19,12 @@
 #
 ##############################################################################
 
-import sale_promotion
-import product
-import sale
-import res_partner
+from openerp.osv import fields, orm
+
+
+class product_product(orm.Model):
+    _inherit = 'product.product'
+
+    _columns = {
+        'promotion_id': fields.many2one('sale.promotion', 'Promotion Program'),
+    }
