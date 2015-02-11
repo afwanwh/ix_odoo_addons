@@ -35,6 +35,7 @@
                             <field name="buy_qty" attrs="{'invisible': [('type','not in',('free'))]}"/>
                             <field name="amount_discount" attrs="{'invisible': [('type','not in',('fixed'))]}"/>
                             <field name="point_values" attrs="{'invisible': [('type','not in',('points'))]}"/>
+                            <field name="points_categ" attrs="{'invisible': [('type', 'not in', ('points')]}"/>
                             <label for="percentage_discount" attrs="{'invisible': [('type','not in',('percentage'))]}"/>
                             <div attrs="{'invisible': [('type','not in',('percentage'))]}">
                                 <field name="percentage_discount" class="oe_inline"/> percent

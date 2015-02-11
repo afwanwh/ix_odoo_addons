@@ -36,6 +36,8 @@ class sale_promotion(orm.Model):
         'buy_qty': fields.integer('Buy Qty'),
         'free_qty': fields.integer('Free Qty'),
         'usage': fields.selection([('product', 'Product Only'), ('subtotal', 'Subtotal in Sale Order'), ('total', 'Total in Sale Order')], 'Apply for'),
+        'points_categ': fields.selection([('product', 'Point from Products'), ('sale', 'Point from Total Sale')], 'Point Category'),
+        # 'product_ids': fields.one2many('product.product', 'promotion
     }
 
     _defaults = {
