@@ -19,30 +19,13 @@
 #
 ##############################################################################
 
-from openerp.tools.translate import _
 from openerp.osv import orm
 
 
-class ir_sequence(orm.Model):
-    _inherit = 'ir.sequence'
+class ix_notification_reset_sequence(orm.TransientModel):
+    _name = 'ix.notification.reset.sequence'
 
-    def reset_sequence_ix(self, cr, uid, ids, context=None):
-        for sequence in self.browse(cr, uid, ids, context=context):
-            sequence.write({'number_next_actual': 1}, context=context)
-        return True
-
-    def show_notif(self, cr, uid, ids, context=None):
-        if context is None:
-            context = {}
-        view_id = self.pool.get('ir.model.data').get_object(cr, uid, 'ix_sequence_manual_reset', 'view_notification_reset_sequence_ix', context=context).id
-        return {
-            'type': 'ir.actions.act_window',
-            'name': _('Warning!'),
-            'view_mode': 'form',
-            'view_type': 'form',
-            'view_id': view_id,
-            'res_model': 'ix.notification.reset.sequence',
-            'nodestroy': True,
-            'target': 'new',
-            'context': context,
-        }
+    def reset(self, cr, uid, ids, context):
+        active_ids = context.get('active_ids', [])
+        self.pool.get('ir.sequence').reset_sequence_ix(cr, uid, active_ids, context=context)
+        return {'type': 'ir.actions.act_window_close'}

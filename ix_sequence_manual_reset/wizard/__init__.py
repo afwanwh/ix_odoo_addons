@@ -19,5 +19,4 @@
 #
 ##############################################################################
 
-import ir_sequence
-import wizard
+import notification

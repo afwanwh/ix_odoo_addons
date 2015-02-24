@@ -8,7 +8,7 @@
             <field name="arch" type="xml">
                 <sheet position="before">
                     <header>
-                    <button name="reset_sequence_ix" type="object" string="Reset Next Number" class="oe_highlight"/>
+                    <button name="show_notif" type="object" string="Reset Next Number" class="oe_highlight"/>
                     </header>
                 </sheet>
             </field>

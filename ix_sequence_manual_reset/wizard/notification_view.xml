@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_notification_reset_sequence_ix" model="ir.ui.view">
+            <field name="name">view_notification_reset_sequence_ix</field>
+            <field name="model">ix.notification.reset.sequence</field>
+            <field name="arch" type="xml">
+                <form string="Reset Sequence" version="7.0">
+                    <separator string='Are you sure to reset the sequence?'/>
+                    <p>Resetting sequence could cause error(s) due to constraints.</p>
+                    <footer>
+                        <button type="object" name="reset" string="Process" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" special="cancel" class="oe_link"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+    </data>
+</openerp>

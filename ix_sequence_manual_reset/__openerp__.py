@@ -35,6 +35,7 @@
     'depends': ['base'],
     'data': [
         'ir_sequence_view.xml',
+        'wizard/notification_view.xml',
     ],
     'demo': [],
     'test': [
