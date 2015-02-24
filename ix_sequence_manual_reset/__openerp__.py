@@ -21,7 +21,7 @@
 
 {
     'name': 'Sequence Manual Reset',
-    'version': '0.1',
+    'version': '0.2',
     'category': 'Tools',
     'sequence': 10,
     'summary': 'Reset sequence manually.',
