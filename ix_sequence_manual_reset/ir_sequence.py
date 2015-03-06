@@ -26,9 +26,9 @@ from openerp.osv import orm
 class ir_sequence(orm.Model):
     _inherit = 'ir.sequence'
 
-    def reset_sequence_ix(self, cr, uid, ids, context=None):
+    def reset_sequence_ix(self, cr, uid, ids, new_number, context=None):
         for sequence in self.browse(cr, uid, ids, context=context):
-            sequence.write({'number_next_actual': 1}, context=context)
+            sequence.write({'number_next_actual': new_number}, context=context)
         return True
 
     def show_notif(self, cr, uid, ids, context=None):

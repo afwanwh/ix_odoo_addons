@@ -19,13 +19,18 @@
 #
 ##############################################################################
 
-from openerp.osv import orm
+from openerp.osv import orm, fields
 
 
 class ix_notification_reset_sequence(orm.TransientModel):
     _name = 'ix.notification.reset.sequence'
 
+    _columns = {
+        'new_number': fields.integer('New Next Number', requirde=True),
+    }
+
     def reset(self, cr, uid, ids, context):
         active_ids = context.get('active_ids', [])
-        self.pool.get('ir.sequence').reset_sequence_ix(cr, uid, active_ids, context=context)
+        for item in self.browse(cr, uid, ids, context=context):
+            self.pool.get('ir.sequence').reset_sequence_ix(cr, uid, active_ids, item.new_number, context=context)
         return {'type': 'ir.actions.act_window_close'}
