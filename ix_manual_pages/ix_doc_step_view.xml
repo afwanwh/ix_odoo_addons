@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="doc_step_form_view_ix" model="ir.ui.view">
+            <field name="name">doc_step_form_view_ix</field>
+            <field name="model">ix.doc.step</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Step" version="7.0">
+                    <field name="name"/>
+                    <group>
+                        <field name="prev_id"/>
+                        <field name="next_id"/>
+                        <field name="content"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record id="doc_step_tree_view_ix" model="ir.ui.view">
+            <field name="name">doc_step_tree_view_ix</field>
+            <field name="model">ix.doc.step</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Step">
+                    <field name="name"/>
+                    <field name="prev_id"/>
+                    <field name="next_id"/>
+                </tree>
+            </field>
+        </record>
+    </data>
+</openerp>
