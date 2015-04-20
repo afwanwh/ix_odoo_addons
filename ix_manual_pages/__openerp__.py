@@ -21,8 +21,8 @@
 
 {
     'name': 'Enchancement of Document Page by iXotem',
-    'version': '1.0',
-    'category': 'Knowledge',
+    'version': '0.1',
+    'category': 'Knowledge Management',
     'sequence': 1,
     'summary': 'Step by step self help.',
     'description': """
@@ -31,8 +31,10 @@
     """,
     'author': 'Afwan Wali Hamim',
     'website': 'http://ixotem.blogspot.com/',
-    'depends': ['document_page'],
+    'depends': ['knowledge'],
     'data': [
+        'security/ir.model.access.csv',
+        'ix_manual_pages_view.xml',
         'ix_doc_step_view.xml',
     ],
     'demo': [],

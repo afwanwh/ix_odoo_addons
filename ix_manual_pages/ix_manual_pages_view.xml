@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <!-- Main Menu of Learning Center-->
+        <menuitem id="learning_center_menu_ix" parent="knowledge.menu_document" name="Learning Center" sequence="1"/>
+
+        <!-- Manual Pages a.k.a Tutorial Form, Tree, and Menu-->
+        <record id="manual_pages_form_view_ix" model="ir.ui.view">
+            <field name="name">manual_pages_form_view_ix</field>
+            <field name="model">ix.manual.pages</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Tutorial">
+                    <header>
+                        <field name="name"/>
+                    </header>
+                    <group>
+                        <field name="description"/>
+                        <field name="next_id"/>
+                        <field name="categ_id"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record id="manual_pages_tree_view_ix" model="ir.ui.view">
+            <field name="name">manual_pages_tree_view_ix</field>
+            <field name="model">ix.manual.pages</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Tutorials">
+                    <field name="name"/>
+                    <field name="categ_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="manual_pages_action_ix" model="ir.actions.act_window">
+            <field name="name">Tutorials</field>
+            <field name="res_model">ix.manual.pages</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree, form</field>
+        </record>
+
+        <menuitem id="manual_pages_menu_ix" parent="learning_center_menu_ix" name="Tutorials" action="manual_pages_action_ix" sequence="1"/>
+
+        <!-- Tutorial Category form, tree, and menuitem-->
+        <record id="manual_categ_form_view_ix" model="ir.ui.view">
+            <field name="name">manual_categ_form_view_ix</field>
+            <field name="model">ix.manual.categ</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Category">
+                    <header>
+                        <field name="name"/>
+                    </header>
+                    <field name="manual_ids">
+                        <tree string="Manual Pages inside Category" create="false" delete="false" toolbar="1">
+                            <field name="name"/>
+                        </tree>
+                    </field>
+                </form>
+            </field>
+        </record>
+
+        <record id="manual_categ_tree_view_ix" model="ir.ui.view">
+            <field name="name">manual_categ_tree_view_ix</field>
+            <field name="model">ix.manual.categ</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Category">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="manual_categ_action_ix" model="ir.actions.act_window">
+            <field name="name">Category</field>
+            <field name="res_model">ix.manual.categ</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree, form</field>
+        </record>
+
+        <menuitem id="manual_categ_menu_ix" parent="learning_center_menu_ix" name="Category" action="manual_categ_action_ix" sequence="2"/>
+
+    </data>
+</openerp>

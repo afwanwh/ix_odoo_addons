@@ -22,13 +22,21 @@
 from openerp.osv import osv, fields
 
 
-class ix_doc_step(osv.osv):
-    _name = 'ix.doc.step'
-    _description = 'Tutorial Step'
+class ix_manual_pages(osv.osv):
+    _name = 'ix.manual.pages'
+    _description = 'Tutorial'
     _columns = {
         'name': fields.char('Name'),
-        'prev_id': fields.many2one('ix.doc.step', 'Previous'),
-        'next_id': fields.many2one('ix.doc.step', 'Next'),
-        'content':  fields.text('Content'),
-        'page_id': fields.many2one('document.page', 'Page ID'),
+        'next_id': fields.many2one('ix.doc.step', 'Start Tutorial'),
+        'description':  fields.text('Description'),
+        'categ_id': fields.many2one('ix.manual.categ', 'Category'),
+    }
+
+
+class ix_manual_categ(osv.osv):
+    _name = 'ix.manual.categ'
+    _description = 'Tutorial Category'
+    _columns = {
+        'name': fields.char('Name'),
+        'manual_ids': fields.one2many('ix.manual.pages', 'categ_id', 'Tutorials')
     }

@@ -6,8 +6,10 @@
             <field name="model">ix.doc.step</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
-                <form string="Step" version="7.0">
-                    <field name="name"/>
+                <form string="Step">
+                    <header>
+                        <field name="name"/>
+                    </header>
                     <group>
                         <field name="prev_id"/>
                         <field name="next_id"/>
@@ -29,5 +31,15 @@
                 </tree>
             </field>
         </record>
+
+        <record id="doc_step_action_ix" model="ir.actions.act_window">
+            <field name="name">Steps</field>
+            <field name="res_model">ix.doc.step</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree, form</field>
+        </record>
+
+        <menuitem id="doc_step_menu_ix" parent="learning_center_menu_ix" name="Steps" action="doc_step_action_ix" sequence="3"/>
+
     </data>
 </openerp>
