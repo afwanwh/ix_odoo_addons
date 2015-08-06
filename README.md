@@ -8,3 +8,5 @@ For usage, just copy module(s) inside your addons folder and install odoo web cl
 ### Under Development
 - ix_manual_pages
 - ix_sale_promotion
+
+**Thank you
