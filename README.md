@@ -1,5 +1,5 @@
 # ix Odoo Modules
-This repository created for Odoo addons I developed.
+This repository created for Odoo addons I developed. These modules work only for Odoo 7.0 that I'm working with now.
 For usage, just copy module(s) inside your addons folder and install odoo web client.
 
 ### Here is the module list that ready to use
@@ -8,5 +8,3 @@ For usage, just copy module(s) inside your addons folder and install odoo web cl
 ### Under Development
 - ix_manual_pages
 - ix_sale_promotion
-
-**Thank you
