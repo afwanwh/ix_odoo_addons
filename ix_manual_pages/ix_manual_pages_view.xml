@@ -55,6 +55,7 @@
             <field name="arch" type="xml">
                 <form string="Category" version="7.0">
                     <h1><field name="name" placeholder="Name"/></h1>
+                    <separator string="Tutorials"/>
                     <field name="manual_ids">
                         <tree string="Manual Pages inside Category" create="false" delete="false" toolbar="1">
                             <field name="name"/>
