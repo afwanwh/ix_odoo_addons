@@ -10,10 +10,8 @@
             <field name="model">ix.manual.pages</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
-                <form string="Tutorial">
-                    <header>
-                        <field name="name"/>
-                    </header>
+                <form string="Tutorial" version="7.0">
+                    <h1><field name="name" placeholder="Name"/></h1>
                     <group>
                         <field name="description"/>
                         <field name="next_id"/>
@@ -39,7 +37,12 @@
             <field name="name">Tutorials</field>
             <field name="res_model">ix.manual.pages</field>
             <field name="view_type">form</field>
-            <field name="view_mode">tree, form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to create a new tutorial page.
+              </p>
+            </field>
         </record>
 
         <menuitem id="manual_pages_menu_ix" parent="learning_center_menu_ix" name="Tutorials" action="manual_pages_action_ix" sequence="1"/>
@@ -50,10 +53,8 @@
             <field name="model">ix.manual.categ</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
-                <form string="Category">
-                    <header>
-                        <field name="name"/>
-                    </header>
+                <form string="Category" version="7.0">
+                    <h1><field name="name" placeholder="Name"/></h1>
                     <field name="manual_ids">
                         <tree string="Manual Pages inside Category" create="false" delete="false" toolbar="1">
                             <field name="name"/>
@@ -78,7 +79,12 @@
             <field name="name">Category</field>
             <field name="res_model">ix.manual.categ</field>
             <field name="view_type">form</field>
-            <field name="view_mode">tree, form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to create a new category of tutorial.
+              </p>
+            </field>
         </record>
 
         <menuitem id="manual_categ_menu_ix" parent="learning_center_menu_ix" name="Category" action="manual_categ_action_ix" sequence="2"/>

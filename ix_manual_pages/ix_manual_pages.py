@@ -19,24 +19,25 @@
 #
 ##############################################################################
 
-from openerp.osv import osv, fields
+from openerp.osv import orm, fields
 
 
-class ix_manual_pages(osv.osv):
+class ix_manual_pages(orm.Model):
     _name = 'ix.manual.pages'
     _description = 'Tutorial'
+    _order = 'name'
     _columns = {
-        'name': fields.char('Name'),
+        'name': fields.char('Name', required=True),
         'next_id': fields.many2one('ix.doc.step', 'Start Tutorial'),
         'description':  fields.text('Description'),
         'categ_id': fields.many2one('ix.manual.categ', 'Category'),
     }
 
 
-class ix_manual_categ(osv.osv):
+class ix_manual_categ(orm.Model):
     _name = 'ix.manual.categ'
     _description = 'Tutorial Category'
     _columns = {
-        'name': fields.char('Name'),
+        'name': fields.char('Name', required=True),
         'manual_ids': fields.one2many('ix.manual.pages', 'categ_id', 'Tutorials')
     }

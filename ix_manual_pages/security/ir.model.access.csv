@@ -1,4 +1,4 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-manual_pages_all,ix_manual_pages.manual_pages all,model_ix_manual_pages,,1,1,1,1
-manual_categ_all,ix_manual_pages.manual_pages all,model_ix_manual_categ,,1,1,1,1
-doc_step_all,ix_manual_pages.doc_step all,model_ix_doc_step,,1,1,1,1
+manual_pages_all,ix_manual_pages.manual_pages all,model_ix_manual_pages,,1,0,0,0
+manual_categ_all,ix_manual_pages.manual_pages all,model_ix_manual_categ,,1,0,0,0
+doc_step_all,ix_manual_pages.doc_step all,model_ix_doc_step,,1,0,0,0

@@ -19,14 +19,14 @@
 #
 ##############################################################################
 
-from openerp.osv import osv, fields
+from openerp.osv import orm, fields
 
 
-class ix_doc_step(osv.osv):
+class ix_doc_step(orm.Model):
     _name = 'ix.doc.step'
     _description = 'Tutorial Step'
     _columns = {
-        'name': fields.char('Name'),
+        'name': fields.char('Name', required=True),
         'prev_id': fields.many2one('ix.doc.step', 'Previous'),
         'next_id': fields.many2one('ix.doc.step', 'Next'),
         'content':  fields.text('Content'),
