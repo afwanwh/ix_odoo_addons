@@ -20,27 +20,27 @@
 ##############################################################################
 
 {
-    'name': 'Sales Promotion',
-    'version': '1.0',
-    'category': 'Sales Management',
-    'sequence': 20,
-    'summary': 'Sales Promotion',
-    'description': """
+    "name": "Sales Promotion",
+    "version": "1.0",
+    "category": "Sales Management",
+    "sequence": 20,
+    "summary": "Sales Promotion",
+    "description": """
         This module provide sales promotion management.
     """,
-    'author': 'Afwan Wali Hamim',
-    'website': 'http://ixotem.blogspot.com/',
-    'depends': ['sale'],
-    'data': [
-        'sale_view.xml',
-        'product_view.xml',
-        'res_partner_view.xml',
+    "author": "Afwan Wali Hamim",
+    "website": "http://www.afwan.id/",
+    "depends": ["sale"],
+    "data": [
+        "sale_view.xml",
+        "product_view.xml",
+        "res_partner_view.xml",
     ],
-    'demo': [],
-    'test': [
+    "demo": [],
+    "test": [
     ],
-    'installable': True,
-    'auto_install': False,
-    'application': True,
+    "installable": True,
+    "auto_install": False,
+    "application": True,
 }
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
