@@ -21,7 +21,7 @@
 
 {
     "name": "Learning Center for Odoo 7.0",
-    "version": "1.0",
+    "version": "1.1",
     "category": "Knowledge Management",
     "sequence": 1,
     "summary": "Learning center for newly employees.",
