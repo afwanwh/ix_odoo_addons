@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf8" ?>
+<openerp>
+    <data>
+        <record model="ir.ui.view"
+            id="create_step_form_view">
+            <field name="name">create.step.form</field>
+            <field name="model">create.man.sequence</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Create Steps" version="7.0">
+                    <h1><field name="name" required="1" placeholder="Name"/></h1>
+                    <group>
+                        <field name="manual_id"/>
+                        <field name="prev_id" on_change="onchange_prev(next_id,prev_id)" domain="[('manual_id','=',manual_id)]"/>
+                        <field name="next_id" on_change="onchange_next(next_id,prev_id)" domain="[('manual_id','=',manual_id)]"/>
+                    </group>
+                    <field name="content" widget="html"/>
+                    <footer>
+                        <button name="create_step" string="Save" type="object" class="oe_highlight"/>
+                         or
+                        <button special="cancel" string="Cancel" type="object" class="oe_link"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+    </data>
+</openerp>

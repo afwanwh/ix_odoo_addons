@@ -21,3 +21,4 @@
 
 import ix_manual_pages
 import ix_doc_step
+import wizard

@@ -19,31 +19,4 @@
 #
 ##############################################################################
 
-{
-    "name": "Learning Center for Odoo 7.0",
-    "version": "1.0",
-    "category": "Knowledge Management",
-    "sequence": 1,
-    "summary": "Learning center for newly employees.",
-    "description": """
-        Provide step-by-step help which is integrated inside document page module.
-        You could make tutorial of using odoo or anything else with this module.
-        Please note, this module work only for Odoo 7.0.
-    """,
-    "author": "Afwan Wali Hamim",
-    "website": "http://afwan.id/",
-    "depends": ["knowledge"],
-    "data": [
-        "security/ir.model.access.csv",
-        "wizard/create_steps_view.xml",
-        "ix_manual_pages_view.xml",
-        "ix_doc_step_view.xml",
-    ],
-    "demo": [],
-    "test": [
-    ],
-    "installable": True,
-    "auto_install": False,
-    "application": True,
-}
-# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
+import create_steps

@@ -11,12 +11,32 @@
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <form string="Tutorial" version="7.0">
-                    <h1><field name="name" placeholder="Name"/></h1>
-                    <group>
-                        <field name="description"/>
-                        <field name="next_id"/>
-                        <field name="categ_id"/>
-                    </group>
+                    <header>
+                        <button name="create_step" string="Create Tutorial Step" type="object" class="oe_highlight"/>
+                        <button name="start_read_tutorial" string="Start Read" type="object" class="oe_highlight"/>
+                    </header>
+                    <sheet>
+                        <h1><field name="name" placeholder="Name"/></h1>
+                        <notebook>
+                            <page string="Information">
+                                <group col="4">
+                                    <field name="user_id"/>
+                                    <field name="categ_id"/>
+                                </group>
+                                <separator string="Description"/>
+                                <field name="description" placeholder="Write description here..."/>
+                            </page>
+                            <page string="Steps">
+                                <field name="step_ids">
+                                    <tree string="Step" create="false">
+                                        <field name="name"/>
+                                        <field name="prev_id"/>
+                                        <field name="next_id"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
                 </form>
             </field>
         </record>
@@ -28,6 +48,7 @@
             <field name="arch" type="xml">
                 <tree string="Tutorials">
                     <field name="name"/>
+                    <field name="user_id"/>
                     <field name="categ_id"/>
                 </tree>
             </field>

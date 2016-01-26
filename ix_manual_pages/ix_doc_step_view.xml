@@ -9,12 +9,9 @@
                 <form string="Step" version="7.0">
                     <h1><field name="name" placeholder="Name"/></h1>
                     <group>
-                        <group>
-                            <field name="prev_id"/>
-                        </group>
-                        <group>
-                            <field name="next_id"/>
-                        </group>
+                        <field name="manual_id"/>
+                        <field name="prev_id"/>
+                        <field name="next_id"/>
                     </group>
                     <field name="content" widget="html"/>
                 </form>
@@ -33,20 +30,5 @@
                 </tree>
             </field>
         </record>
-
-        <record id="doc_step_action_ix" model="ir.actions.act_window">
-            <field name="name">Steps</field>
-            <field name="res_model">ix.doc.step</field>
-            <field name="view_type">form</field>
-            <field name="view_mode">tree,form</field>
-            <field name="help" type="html">
-              <p class="oe_view_nocontent_create">
-                Click to create a new step for tutorial.
-              </p>
-            </field>
-        </record>
-
-        <menuitem id="doc_step_menu_ix" parent="learning_center_menu_ix" name="Steps" action="doc_step_action_ix" sequence="3"/>
-
     </data>
 </openerp>
