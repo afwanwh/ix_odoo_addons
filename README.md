@@ -1,0 +1,3 @@
+# Odoo Modules for Odoo 9.0
+This repository created for Odoo addons I developed. These modules work only for Odoo 9.0 that I'm working with now.
+For usage, just copy module(s) inside your addons folder and install odoo web client...
