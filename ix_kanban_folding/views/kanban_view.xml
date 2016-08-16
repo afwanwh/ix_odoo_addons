@@ -1,0 +1,8 @@
+<odoo>
+    <!-- Javascript file declaration. -->
+    <template id="ix_kanban_column" name="ix_kanban_column" inherit_id="web.assets_backend">
+        <xpath expr="." position="inside">
+            <script type="text/javascript" src="/ix_kanban_folding/static/src/js/kanban_column.js"></script>
+        </xpath>
+    </template>
+</odoo>
