@@ -1,4 +1,4 @@
-odoo.define('ix_kanban_folding.ix_kanban_column', function (require) {
+odoo.define('ix_kanban_folding.ix_kanban_folding', function (require) {
 "use strict";
 var KanbanColumn = require('web_kanban.Column');
 
