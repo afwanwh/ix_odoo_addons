@@ -19,7 +19,4 @@
 #
 ##############################################################################
 
-import sale_promotion
-import product
-import sale
-import res_partner
+import models

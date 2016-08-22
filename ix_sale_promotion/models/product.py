@@ -19,12 +19,10 @@
 #
 ##############################################################################
 
-from openerp.osv import fields, orm
+from openerp import fields, models
 
 
-class product_product(orm.Model):
+class product_product(models.Model):
     _inherit = 'product.product'
 
-    _columns = {
-        'promotion_id': fields.many2one('sale.promotion', 'Promotion Program'),
-    }
+    promotion_id = fields.Many2one('sale.promotion', string='Promotion Program')

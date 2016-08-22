@@ -21,9 +21,9 @@
 
 {
     "name": "Sales Promotion",
-    "version": "1.0",
+    "version": "0.1",
     "category": "Sales Management",
-    "sequence": 20,
+    "sequence": 1,
     "summary": "Sales Promotion",
     "description": """
         This module provide sales promotion management.
@@ -32,9 +32,9 @@
     "website": "http://www.afwan.id/",
     "depends": ["sale"],
     "data": [
-        "sale_view.xml",
-        "product_view.xml",
-        "res_partner_view.xml",
+        "views/sale_view.xml",
+        "views/product_view.xml",
+        "views/res_partner_view.xml",
     ],
     "demo": [],
     "test": [

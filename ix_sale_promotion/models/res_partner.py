@@ -19,12 +19,12 @@
 #
 ##############################################################################
 
-from openerp.osv import fields, orm
+from openerp import fields, models
 
 
-class sale_order(orm.Model):
-    _inherit = 'sale.order'
+class res_partner(models.Model):
+    _inherit = 'res.partner'
 
-    _columns = {
-        'promotion_id': fields.many2one('sale.promotion', 'Promotion Program'),
-    }
+    promotion_id = fields.Many2one('sale.promotion', string='Promotion Program'),
+    available_pts = fields.Integer(string='Available Point(s)')
+    redeemed_pts = fields.Integer(string='Redeemed Point(s)'),
