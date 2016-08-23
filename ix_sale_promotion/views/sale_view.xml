@@ -19,8 +19,8 @@
             <field name="arch" type="xml">
                 <form string="Sales Promotions" version="7.0">
                     <header>
-                        <button name="turn_promotion_on" string="Turn ON" type="object" attrs="{'invisible': [('state','in',('on'))]}" class="oe_highlight"/>
-                        <button name="turn_promotion_off" string="Turn OFF" type="object" attrs="{'invisible': [('state','in',('off'))]}" class="oe_highlight"/>
+                        <button name="turn_promotion_on" string="Activate" type="object" attrs="{'invisible': [('state','in',('on'))]}" class="oe_highlight"/>
+                        <button name="turn_promotion_off" string="Deactivate" type="object" attrs="{'invisible': [('state','in',('off'))]}" class="oe_highlight"/>
                         <field name="state" widget="statusbar" statusbar_visible="on, off"/>
                     </header>
                     <label for="name" class="oe_edit_only"/>
@@ -34,8 +34,6 @@
                         <group>
                             <field name="buy_qty" attrs="{'invisible': [('type','not in',('free'))]}"/>
                             <field name="amount_discount" attrs="{'invisible': [('type','not in',('fixed'))]}"/>
-                            <field name="point_values" attrs="{'invisible': [('type','not in',('points'))]}"/>
-                            <field name="points_categ" attrs="{'invisible': [('type', 'not in', ('points')]}"/>
                             <label for="percentage_discount" attrs="{'invisible': [('type','not in',('percentage'))]}"/>
                             <div attrs="{'invisible': [('type','not in',('percentage'))]}">
                                 <field name="percentage_discount" class="oe_inline"/> percent
@@ -75,7 +73,7 @@
                 Click to define a new sale promotion.
               </p><p>
                 Sale promotion will boost your sales. Make a good promotion with discount calculated
-                based on percentage, points, fixed amount, or buy x free y.
+                based on percentage, fixed amount, or buy x free y.
               </p>
             </field>
         </record>

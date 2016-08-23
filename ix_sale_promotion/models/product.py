@@ -22,7 +22,7 @@
 from openerp import fields, models
 
 
-class product_product(models.Model):
-    _inherit = 'product.product'
+class product_template(models.Model):
+    _inherit = 'product.template'
 
     promotion_id = fields.Many2one('sale.promotion', string='Promotion Program')

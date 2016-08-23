@@ -19,38 +19,30 @@
 #
 ##############################################################################
 
-from openerp.osv import fields, orm
+from openerp import api, fields, models, _
 
 
-class sale_promotion(orm.Model):
+class sale_promotion(models.Model):
     _name = 'sale.promotion'
 
-    _columns = {
-        'name': fields.char('Tittle', required=True, help='Tittle of promotion.'),
-        'code': fields.char('Code', required=True, help='Code of promotion. Must be unique!'),
-        'type': fields.selection([('fixed', 'Fixed Amount Discount'), ('free', 'Buy X Free Y'), ('percentage', 'Percentage Discount'), ('points', 'Points Based Discount')], 'Promotion Type', required=True),
-        'amount_discount': fields.float('Amount of Disc'),
-        'percentage_discount': fields.float('Discount Percentage'),
-        'point_values': fields.float('Value of a Point'),
-        'state': fields.selection([('off', 'OFF'), ('on', 'ON')], 'Status'),
-        'buy_qty': fields.integer('Buy Qty'),
-        'free_qty': fields.integer('Free Qty'),
-        'usage': fields.selection([('product', 'Product Only'), ('subtotal', 'Subtotal in Sale Order'), ('total', 'Total in Sale Order')], 'Apply for'),
-        'points_categ': fields.selection([('product', 'Point from Products'), ('sale', 'Point from Total Sale')], 'Point Category'),
-    }
+    name = fields.Char(string='Title', required=True, help='Title of promotion.')
+    code = fields.Char(string='Code', required=True, help='Code of promotion. Must be unique!')
+    type = fields.Selection([('fixed', 'Fixed Amount Discount'), ('free', 'Buy X Free Y'), ('percentage', 'Percentage Discount')], string='Promotion Type', required=True, default='fixed')
+    amount_discount = fields.Float(string='Amount of Disc')
+    percentage_discount = fields.Float(string='Discount Percentage')
+    point_values = fields.Float(string='Value of a Point')
+    state = fields.Selection([('off', 'Inactive'), ('on', 'Active')], string='Status', default='off')
+    buy_qty = fields.Integer(string='Buy Qty')
+    free_qty = fields.Integer(string='Free Qty')
+    usage = fields.Selection([('product', 'Product Only'), ('subtotal', 'Subtotal in Sale Order'), ('total', 'Total in Sale Order')], string='Apply for')
+    points_categ = fields.Selection([('product', 'Point from Products'), ('sale', 'Point from Total Sale')], string='Point Category')
 
-    _defaults = {
-        'state': 'off',
-    }
+    _sql_constraints = [('code_uniq', 'UNIQUE(code)', _('Two or more same codes are disallowed. Define another code.'))]
 
-    _sql_constraints = [('code_uniq', 'unique(code)', 'Two or more same codes are disallowed. Define another code.')]
+    @api.multi
+    def turn_promotion_on(self):
+        return self.write({'state': 'on'})
 
-    def turn_promotion_on(self, cr, uid, ids, context=None):
-        if context is None:
-            context = {}
-        return self.write(cr, uid, ids, {'state': 'on'}, context=context)
-
+    @api.multi
     def turn_promotion_off(self, cr, uid, ids, context=None):
-        if context is None:
-            context = {}
-        return self.write(cr, uid, ids, {'state': 'off'}, context=context)
+        return self.write({'state': 'off'})

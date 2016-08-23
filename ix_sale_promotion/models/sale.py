@@ -22,7 +22,7 @@
 from openerp import fields, models
 
 
-class sale_order(orm.Model):
+class sale_order(models.Model):
     _inherit = 'sale.order'
 
     promotion_id = fields.Many2one('sale.promotion', string='Promotion Program')
