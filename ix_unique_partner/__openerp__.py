@@ -9,7 +9,7 @@
     """,
     "website": "http://afwan.id/",
     "depends": [
-        "web_kanban",
+        "base",
         ],
     "data": [
         "views/res_partner_view.xml",
