@@ -1,0 +1,28 @@
+<odoo>
+    <data>
+        <record id="ix_unique_code_partner_form_view" model="ir.ui.view">
+            <field name="name">ix_unique_code_partner_form_view</field>
+            <field name="model">res.partner</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <field name="website" position="after">
+                    <field name="ix_code"/>
+                    <field name="ix_show" attrs="{'readonly': [('ix_code', '=', False)]}"/>
+                </field>
+            </field>
+        </record>
+
+        <record id="ix_unique_code_partner_tree_view" model="ir.ui.view">
+            <field name="name">ix_unique_code_partner_tree_view</field>
+            <field name="model">res.partner</field>
+            <field name="type">tree</field>
+            <field name="inherit_id" ref="base.view_partner_tree"/>
+            <field name="arch" type="xml">
+                <field name="display_name" position="after">
+                    <field name="ix_code"/>
+                </field>
+            </field>
+        </record>
+    </data>
+</odoo>
