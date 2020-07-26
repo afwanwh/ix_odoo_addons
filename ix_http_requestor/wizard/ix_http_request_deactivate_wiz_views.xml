@@ -1,0 +1,18 @@
+<odoo>
+    <record id="ix_http_request_deactivate_wiz_form_view" model="ir.ui.view">
+        <field name="name">ix_http_request_deactivate_wiz_form_view</field>
+        <field name="model">ix.http.request.deactivate.wiz</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Deactivate Scheduler">
+                <p>
+                    Are you sure deactivate the scheduler?
+                </p>
+                <footer>
+                    <button string="Deactivate" name="deactivate" type="object" class="oe_highlight"/>
+                    <button string="Cancel" class="btn btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

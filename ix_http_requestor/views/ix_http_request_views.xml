@@ -1,0 +1,85 @@
+<odoo>
+    <record id="ix_http_request_form_view" model="ir.ui.view">
+        <field name="name">ix_http_request_form_view</field>
+        <field name="model">ix.http.request</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="HTTP Request">
+                <header>
+                    <button name="test_request" type="object" string="Test"/>
+                    <button type="object" name="open_activate_wizard" string="Activate" attrs="{'invisible': [('cron_active', '=', True)]}" class="btn-primary"/>
+                    <button type="object" name="open_deactivate_wizard" string="Deactivate" attrs="{'invisible': [('cron_active', '=', False)]}" class="btn-primary"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="method"/>
+                        </group>
+                        <group>
+                            <field name="cron_id" readonly="1"/>
+                            <field name="cron_active" readonly="1"/>
+                        </group>
+                    </group>
+                    <group string="URL">
+                        <field name="url" nolabel="1" placeholder="Put URL here.."/>
+                    </group>
+                    <group string="Header">
+                        <field name="header" nolabel="1" placeholder="Must be formatted as json like {'Content-type': 'application/json'}"/>
+                    </group>
+                    <group string="Body">
+                        <field name="body" nolabel="1" placeholder="Must be formatted as json like {'chat_id': 123456, 'text': 'Hello!'}"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="ix_http_request_tree_view" model="ir.ui.view">
+        <field name="name">ix_http_request_tree_view</field>
+        <field name="model">ix.http.request</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="HTTP Requests">
+                <field name="name"/>
+                <field name="method"/>
+                <field name="cron_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="ix_http_request_search_view" model="ir.ui.view">
+        <field name="name">ix_http_request_search_view</field>
+        <field name="model">ix.http.request</field>
+        <field name="type">search</field>
+        <field name="arch"  type="xml">
+            <search string="HTTP Request">
+                <field name="name"/>
+                <field name="url"/>
+                <field name="header"/>
+                <field name="body"/>
+                <field name="cron_id"/>
+                <group expand="1" string="Group By">
+                    <filter string="Method" name='method' context="{'group_by':'method'}"/>
+                    <filter string="URL" name="url" context="{'group_by':'url'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="ix_http_request_action" model="ir.actions.act_window">
+        <field name="name">HTTP Requestor</field>
+        <field name="res_model">ix.http.request</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+          <p class="o_view_nocontent_smiling_face">
+            Create a new HTTP Request
+          </p><p>
+            Create a HTTP request and schedule it easily.
+          </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_ix_http_request_parent" name="HTTP Requestor" parent="base.menu_custom"/>
+    <menuitem id="menu_ix_http_request" action="ix_http_request_action" parent="menu_ix_http_request_parent"/>
+</odoo>
