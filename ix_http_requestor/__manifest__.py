@@ -1,6 +1,6 @@
 {
     'name': 'HTTP Requestor',
-    'version': '0.1.0',
+    'version': '1.0.0',
     'author': 'Afwan Wali Hamim',
     'category': 'ix Module/Tools',
     'website': 'https://afwan.id/',
@@ -16,6 +16,7 @@
         'security/ir.model.access.csv',
         'wizard/ix_http_request_scheduler_wiz_views.xml',
         'wizard/ix_http_request_deactivate_wiz_views.xml',
+        'wizard/ix_http_test_result_wiz_views.xml',
         'views/ix_http_request_views.xml',
     ],
     'installable': True,

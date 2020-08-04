@@ -48,8 +48,22 @@ class IxHttpRequest(models.Model):
     )
 
     @api.model
+    def _method_selector(self, url, headers, data):
+        method = self.method
+        if method == 'get':
+            return requests.get(url, data=data, headers=headers)
+        elif method == 'post':
+            return requests.post(url, data=data, headers=headers)
+        elif method == 'delete':
+            return requests.delete(url, data=data, headers=headers)
+        elif method == 'put':
+            return requests.put(url, data=data, headers=headers)
+        else:
+            return False
+
+    @api.model
     def _request(self):
-        res = requests.post(
+        res = self._method_selector(
             self.url,
             headers=self._convert_to_dict(self.header),
             data=json.dumps(self._convert_to_dict(self.body))
@@ -59,7 +73,10 @@ class IxHttpRequest(models.Model):
     @api.model
     def _convert_to_dict(self, str_to_dict):
         try:
-            return ast.literal_eval(str_to_dict)
+            result = {}
+            if str_to_dict:
+                result = ast.literal_eval(str_to_dict)
+            return result
         except Exception as e:
             _logger.exception(e)
             _error_msg = e.msg + ' line ' + str(e.lineno) + ' offset ' + \
@@ -69,15 +86,26 @@ class IxHttpRequest(models.Model):
             ))
 
     def test_request(self):
-        result = []
+        context = dict(self._context)
         for req in self:
             res = req._request()
-            result.append(res)
-        return result
+            msg_code = 'STATUS CODE: ' + str(res.status_code)
+            msg_reason = 'REASON: ' + res.reason
+            msg_text = 'RESPONSE: ' + res.text
+            msg = msg_code + '\n' + msg_reason + '\n' + msg_text
+            context['default_response'] = msg
+            return {
+                'type': 'ir.actions.act_window',
+                'name': _('HTTP Response'),
+                'view_mode': 'form',
+                'res_model': 'ix.htpp.test.result.wiz',
+                'target': 'new',
+                'context': context
+            }
 
     def request(self, req_id):
         req = self.browse(req_id)
-        req._request()
+        return req._request()
 
     def open_activate_wizard(self):
         for item in self:

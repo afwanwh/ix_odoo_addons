@@ -25,10 +25,10 @@
                         <field name="url" nolabel="1" placeholder="Put URL here.."/>
                     </group>
                     <group string="Header">
-                        <field name="header" nolabel="1" placeholder="Must be formatted as json like {'Content-type': 'application/json'}"/>
+                        <field name="header" nolabel="1" placeholder="Must be formatted as json like {'Content-type': 'application/json'}. Put empty dictionary for empty header."/>
                     </group>
                     <group string="Body">
-                        <field name="body" nolabel="1" placeholder="Must be formatted as json like {'chat_id': 123456, 'text': 'Hello!'}"/>
+                        <field name="body" nolabel="1" placeholder="Must be formatted as json like {'chat_id': 123456, 'text': 'Hello!'}. Put empty dictionary for empty body."/>
                     </group>
                 </sheet>
             </form>

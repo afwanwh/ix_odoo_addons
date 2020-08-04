@@ -1,0 +1,15 @@
+<odoo>
+    <record id="ix_http_test_result_wiz_form_view" model="ir.ui.view">
+        <field name="name">ix_http_test_result_wiz_form_view</field>
+        <field name="model">ix.htpp.test.result.wiz</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="HTTP Response">
+                <field name="response" readonly="1"/>
+                <footer>
+                    <button string="OK" name="ok" type="object" class="oe_highlight"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>
